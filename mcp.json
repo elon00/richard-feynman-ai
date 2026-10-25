@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "richard-feynman-ai": {
+      "command": "cargo",
+      "args": [
+        "run",
+        "--release",
+        "--quiet"
+      ],
+      "env": {
+        "RUST_LOG": "info",
+        "TITAN_PROTOCOL": "FEYNMAN",
+        "FIPS_203_LEVEL": "ML-KEM-768",
+        "FIPS_204_LEVEL": "ML-DSA-65"
+      },
+      "tools": [
+        {
+          "name": "compute_path_integral_propagator",
+          "description": "Calculates sum-over-histories quantum action integrals and probability amplitude phases",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "lagrangian_str": {
+                "type": "string"
+              },
+              "path_steps": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "lagrangian_str"
+            ]
+          }
+        },
+        {
+          "name": "evaluate_feynman_loop_diagram",
+          "description": "Computes renormalization counterterms, vertex corrections and QED photon-electron cross sections",
+          "parameters": {
+            "type": "object",
+            "properties": {
+              "momentum_transfer_gev": {
+                "type": "number"
+              },
+              "loop_order": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "momentum_transfer_gev"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
